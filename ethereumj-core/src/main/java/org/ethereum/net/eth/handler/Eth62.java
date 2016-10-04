@@ -244,7 +244,8 @@ public class Eth62 extends EthHandler {
 
         try {
 
-            if (!Arrays.equals(msg.getGenesisHash(), config.getGenesis().getHash())) {
+            if (!Arrays.equals(msg.getGenesisHash(), config.getGenesis().getHash())
+                    || msg.getProtocolVersion() != version.getCode()) {
                 if (!peerDiscoveryMode) {
                     loggerNet.info("Removing EthHandler for {} due to protocol incompatibility", ctx.channel().remoteAddress());
                 }
